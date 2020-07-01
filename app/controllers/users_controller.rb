@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :check_user, only: :show
 
   def new
-    @user = User.new
+    @new_user = User.new
   end
 
   def create

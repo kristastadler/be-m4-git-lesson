@@ -22,9 +22,6 @@ class Order < ApplicationRecord
     end
   end
 
-  def self.total_ordered
-    where(status: 0).count
-  end
 
   def self.total_paid
     where(status: 1).count

@@ -9,19 +9,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def create
-    order = Order.new(user: current_user)
-    if order.save
-      order.create_order_items(session[:cart])
-      session[:cart] = {}
-      flash[:success] = "Order was successfully placed."
-      redirect_to orders_path
-    else
-      flash[:error] = "An error occured please replace your order."
-      redirect_to cart_path
-    end
-  end
-
   def update
     @order = Order.find(params[:id])
     if @order.ordered? || @order.paid?
